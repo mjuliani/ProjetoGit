@@ -11,34 +11,42 @@ jobs:
 #       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: echo Hello, world!
+      - name: Adding markdown
+        run: echo '### Build :rocket:' >> $GITHUB_STEP_SUMMARY
   
   deploy_dev:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: 'mjuliani.com.br'
+      url: 'https://mjuliani.com.br'
     needs: build
     steps:
       - name: Script 1
         run: echo Script DEV
+      - name: Adding markdown
+        run: echo '### Deploy dev :rocket:' >> $GITHUB_STEP_SUMMARY
 
   deploy_hmg:
     runs-on: ubuntu-latest
     environment:
       name: hmg
-      url: 'mjuliani.com.br'
+      url: 'https://mjuliani.com.br'
     needs: deploy_dev
     steps:
       - name: Script 1
         run: echo Script HMG
+      - name: Adding markdown
+        run: echo '### Deploy hmg :rocket:' >> $GITHUB_STEP_SUMMARY
 
   deploy_prod:
     runs-on: ubuntu-latest
     environment:
       name: prod
-      url: 'mjuliani.com.br'
+      url: 'https://mjuliani.com.br'
     needs: deploy_hmg
     steps:
       - name: Script 1
         run: echo Script PROD
+      - name: Adding markdown
+        run: echo '### Deploy prod :rocket:' >> $GITHUB_STEP_SUMMARY
 
